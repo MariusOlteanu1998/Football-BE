@@ -42,22 +42,7 @@ public class UserService {
 												 user.setCf(updateUser.getCf());
 												 return userRepo.save(user);
 												});
-		  //METODO 2
-		  /*Optional<UserModel> optionalUser = userRepo.findById(id);
-		        
-		        if (optionalUser.isPresent()) {
-		            UserModel user = optionalUser.get();
-		            user.setNome(updateUser.getNome());
-		            user.setCognome(updateUser.getCognome());
-		            user.setAnno_nascita(updateUser.getAnno_nascita());
-		            user.setEmail(updateUser.getEmail());
-		            user.setPassword(updateUser.getPassword());
-		            user.setCf(updateUser.getCf());
-		            return Optional.of(userRepo.save(user));
-		        } else {
-		            return Optional.empty();
-		        }*/
-	}
+		  	}
 	
 	public UserModel insertUser(UserModel user) {
 		
