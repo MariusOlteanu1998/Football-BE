@@ -33,7 +33,7 @@ public class UserService {
 	public Optional<UserModel> updateUsers(int id, UserModel updateUser){
 		
 		//METODO 1
-		/*return userRepo.findById(id).map(user ->{
+		return userRepo.findById(id).map(user ->{
 												 user.setNome(updateUser.getNome());
 												 user.setCognome(updateUser.getCognome());
 												 user.setAnno_nascita(updateUser.getAnno_nascita());
@@ -41,9 +41,9 @@ public class UserService {
 												 user.setPassword(updateUser.getPassword());
 												 user.setCf(updateUser.getCf());
 												 return userRepo.save(user);
-												});*/
+												});
 		  //METODO 2
-		  Optional<UserModel> optionalUser = userRepo.findById(id);
+		  /*Optional<UserModel> optionalUser = userRepo.findById(id);
 		        
 		        if (optionalUser.isPresent()) {
 		            UserModel user = optionalUser.get();
@@ -56,7 +56,7 @@ public class UserService {
 		            return Optional.of(userRepo.save(user));
 		        } else {
 		            return Optional.empty();
-		        }
+		        }*/
 	}
 	
 	public UserModel insertUser(UserModel user) {
