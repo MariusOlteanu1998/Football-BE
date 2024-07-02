@@ -25,10 +25,12 @@ public class UserService {
 		return userRepo.findAll();
 	}
 	
+	
 	public Optional<UserModel> getAllUsersById(int id){
 		
 		return userRepo.findById(id);
 	}
+	
 	
 	public Optional<UserModel> updateUsers(int id, UserModel updateUser){
 		
@@ -59,10 +61,12 @@ public class UserService {
 		        }
 	}
 	
+	
 	public UserModel insertUser(UserModel user) {
 		
 		return userRepo.save(user);
 	}
+	
 	
 	public void deleteUser(int id) {
 		
