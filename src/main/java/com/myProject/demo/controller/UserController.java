@@ -19,15 +19,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "http://localhost:4200") // Applica CORS a livello di classe
+@CrossOrigin(origins = "http://localhost:4200") 
 public class UserController {
 	
 	@Autowired
 	private final UserService userService;
+	
 
 	public UserController(UserService userService) {
 		this.userService = userService;
 	}
+	
 	
 	@GetMapping
 	public List<UserModel> getAllUsers(){
