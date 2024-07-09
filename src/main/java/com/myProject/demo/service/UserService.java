@@ -55,7 +55,7 @@ public class UserService {
 		            user.setEmail(updateUser.getEmail());
 		            user.setPassword(updateUser.getPassword());
 		            user.setCf(updateUser.getCf());
-		            user.setScheda(updateUser.getScheda());
+		            //user.setScheda(updateUser.getScheda());
 		            return Optional.of(userRepo.save(user));
 		        } else {
 		            return Optional.empty();

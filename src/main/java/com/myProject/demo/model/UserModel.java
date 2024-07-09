@@ -34,14 +34,14 @@ public class UserModel {
     @Column(name = "cf", unique = true)
     private String cf;
 
-    @ManyToOne
-    private SchedaModel scheda;
+    /*@ManyToOne
+    private SchedaModel scheda;*/
     
 
     public UserModel() {}
 
     public UserModel(int id, String nome, String cognome, LocalDate anno_nascita, String email, String password,
-                     String cf, SchedaModel scheda) {
+                     String cf/*, SchedaModel scheda*/) {
         this.id = id;
         this.nome = nome;
         this.cognome = cognome;
@@ -49,7 +49,7 @@ public class UserModel {
         this.email = email;
         this.password = password;
         this.cf = cf;
-        this.scheda = scheda;
+        /*this.scheda = scheda;*/
     }
 
     
@@ -109,18 +109,18 @@ public class UserModel {
 		this.cf = cf;
 	}
 
-	public SchedaModel getScheda() {
+	/*public SchedaModel getScheda() {
 		return scheda;
 	}
 
 	public void setScheda(SchedaModel scheda) {
 		this.scheda = scheda;
-	}
+	}*/
 	
 	
     @Override
     public String toString() {
         return "UserModel [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", anno_nascita=" + anno_nascita
-                + ", email=" + email + ", password=" + password + ", cf=" + cf + ", scheda=" + scheda + "]";
+				+ ", email=" + email + ", password=" + password + ", cf=" + cf + /* ", scheda=" + scheda + */"]";
     }
 }
