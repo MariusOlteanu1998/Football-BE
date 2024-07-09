@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.myProject.demo.model.UserModel;
@@ -20,9 +21,9 @@ public class UserService {
 	}
 	
 	
-	public List<UserModel> getAllUsers(){
+	public List<UserModel> getAllUsers(String sort){
 		
-		return userRepo.findAll();
+		return userRepo.findAll(Sort.by(sort));
 	}
 	
 	

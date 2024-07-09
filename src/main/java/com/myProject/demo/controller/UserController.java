@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myProject.demo.model.UserModel;
@@ -32,8 +33,8 @@ public class UserController {
 	
 	
 	@GetMapping
-	public List<UserModel> getAllUsers(){
-		return userService.getAllUsers();
+	public List<UserModel> getAllUsers(@RequestParam(required = false, defaultValue = "nome") String sort){
+		return userService.getAllUsers(sort);
 	}
 
 	@GetMapping("/{id}")
