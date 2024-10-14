@@ -4,13 +4,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
-import com.myProject.demo.model.SchedaModel;
+import com.myProject.demo.dto.UserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.myProject.demo.model.UserModel;
 import com.myProject.demo.repository.UserRepository;
 
 @Service
@@ -25,42 +24,42 @@ public class UserService {
 		this.userRepo = userRepo;
 	}
 
-	public List<UserModel> getAllUsers(){
+	public List<UserDTO> getAllUsers() {
 		logger.info("Fetching all users");
 		return userRepo.findAll();
 	}
 
-	public Optional<UserModel> getAllUsersById(int id){
+	public Optional<UserDTO> getAllUsersById(int id) {
 		logger.info("Fetching user with ID: {}", id);
 		return userRepo.findById(id);
 	}
 
-	public UserModel updateUserById(int id, UserModel updateUser){
+	public UserDTO updateUserById(int id, UserDTO updateUser) {
 		logger.info("Updating user with id: {}", id);
 		return userRepo.findById(id)
 				.map(existingUser -> {
-								// Aggiorna solo i campi che sono stati forniti
-								if (updateUser.getNome() != null) {
-									existingUser.setNome(updateUser.getNome());
-								}
-								if (updateUser.getCognome() != null) {
-									existingUser.setCognome(updateUser.getCognome());
-								}
-								if (updateUser.getAnno_nascita() != null) {
-									existingUser.setAnno_nascita(updateUser.getAnno_nascita());
-								}
-								if (updateUser.getEmail() != null) {
-									existingUser.setEmail(updateUser.getEmail());
-								}
-								if (updateUser.getPassword() != null) {
-									existingUser.setPassword(updateUser.getPassword());
-								}
-								if (updateUser.getCf() != null) {
-									existingUser.setCf(updateUser.getCf());
-								}
+					// Aggiorna solo i campi che sono stati forniti
+					if (updateUser.getNome() != null) {
+						existingUser.setNome(updateUser.getNome());
+					}
+					if (updateUser.getCognome() != null) {
+						existingUser.setCognome(updateUser.getCognome());
+					}
+					if (updateUser.getAnno_nascita() != null) {
+						existingUser.setAnno_nascita(updateUser.getAnno_nascita());
+					}
+					if (updateUser.getEmail() != null) {
+						existingUser.setEmail(updateUser.getEmail());
+					}
+					if (updateUser.getPassword() != null) {
+						existingUser.setPassword(updateUser.getPassword());
+					}
+					if (updateUser.getCf() != null) {
+						existingUser.setCf(updateUser.getCf());
+					}
 
 					// Salva l'oggetto aggiornato
-					UserModel savedUser = userRepo.save(existingUser);
+					UserDTO savedUser = userRepo.save(existingUser);
 
 					// Ottieni le modifiche
 					String changes = getUserChanges(existingUser, existingUser);
@@ -73,10 +72,9 @@ public class UserService {
 				});
 	}
 
-
-	public UserModel insertUser(UserModel user) {
+	public UserDTO insertUser(UserDTO user) {
 		logger.info("Inserting new user with ID: {}", user.getId());
-		UserModel newUser = userRepo.save(user);
+		UserDTO newUser = userRepo.save(user);
 		logger.info("User with ID: {} inserted successfully", newUser.getId());
 		return newUser;
 	}
@@ -87,7 +85,7 @@ public class UserService {
 		logger.info("User with ID: {} deleted successfully", id);
 	}
 
-	private String getUserChanges(UserModel oldUser, UserModel newUser) {
+	private String getUserChanges(UserDTO oldUser, UserDTO newUser) {
 		StringBuilder changes = new StringBuilder();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
@@ -105,7 +103,7 @@ public class UserService {
 			changes.append(String.format("Email changed from '%s' to '%s'. ", oldUser.getEmail(), newUser.getEmail()));
 		}
 		if (!oldUser.getPassword().equals(newUser.getPassword())) {
-			changes.append(String.format("Password changed from '%s' to '%s'. ", oldUser.getPassword(), newUser.getPassword()));
+			changes.append("Password changed. ");
 		}
 		if (!oldUser.getCf().equals(newUser.getCf())) {
 			changes.append(String.format("CF changed from '%s' to '%s'. ", oldUser.getCf(), newUser.getCf()));
@@ -113,5 +111,4 @@ public class UserService {
 
 		return changes.toString();
 	}
-
 }

@@ -1,33 +1,33 @@
-package com.myProject.demo.model;
+package com.myProject.demo.dto;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.util.Date;
 
-@Entity
-public class SchedaModel {
+public class SchedaDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "data_creazione")
+    @NotNull(message = "La data di creazione non può essere nulla")
     private Date data_creazione;
 
-    @Column(name = "data_fine")
+    @NotNull(message = "La data di fine non può essere nulla")
     private Date data_fine;
 
-    @Column(name = "esercizio")
+    @NotNull(message = "L'esercizio non può essere nullo")
+    @Size(min = 3, max = 100, message = "Il nome dell'esercizio deve avere tra 3 e 100 caratteri")
     private String esercizio;
 
-    @Column(name = "reps")
+    @NotNull(message = "Le ripetizioni non possono essere nulle")
     private String reps;
 
-    @Column(name = "recupero")
+    @NotNull(message = "Il recupero non può essere nullo")
     private String recupero;
 
-    public SchedaModel() {}
+    public SchedaDTO() {}
 
-    public SchedaModel(int id, Date data_creazione, Date data_fine, String esercizio, String reps, String recupero) {
+    public SchedaDTO(int id, Date data_creazione, Date data_fine, String esercizio, String reps, String recupero) {
         this.id = id;
         this.data_creazione = data_creazione;
         this.data_fine = data_fine;
@@ -83,17 +83,5 @@ public class SchedaModel {
 
     public void setRecupero(String recupero) {
         this.recupero = recupero;
-    }
-
-    @Override
-    public String toString() {
-        return "SchedaModel{" +
-                "id=" + id +
-                ", data_creazione=" + data_creazione +
-                ", data_fine=" + data_fine +
-                ", esercizio='" + esercizio + '\'' +
-                ", reps='" + reps + '\'' +
-                ", recupero='" + recupero + '\'' +
-                '}';
     }
 }

@@ -1,33 +1,36 @@
 package com.myProject.demo.model;
 
 import java.time.LocalDate;
-
 import jakarta.persistence.*;
 
 @Entity
 public class UserModel {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
 	@Column(name = "nome")
 	private String nome;
+
 	@Column(name = "cognome")
 	private String cognome;
+
 	@Column(name = "anno_nascita")
 	private LocalDate anno_nascita;
+
 	@Column(name = "email", unique = true)
 	private String email;
+
 	@Column(name = "password")
 	private String password;
+
 	@Column(name = "cf", unique = true)
 	private String cf;
-	
-	
+
 	public UserModel() {}
 
-	public UserModel(int id, String nome, String cognome, LocalDate anno_nascita, String email, String password,
-			String cf) {
+	public UserModel(int id, String nome, String cognome, LocalDate anno_nascita, String email, String password, String cf) {
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
@@ -36,7 +39,8 @@ public class UserModel {
 		this.password = password;
 		this.cf = cf;
 	}
-	
+
+	// Getters e Setters
 	public int getId() {
 		return id;
 	}
@@ -95,8 +99,14 @@ public class UserModel {
 
 	@Override
 	public String toString() {
-		return "UserModel [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", anno_nascita=" + anno_nascita
-				+ ", email=" + email + ", password=" + password + ", cf=" + cf + "]";
+		return "UserModel{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", cognome='" + cognome + '\'' +
+				", anno_nascita=" + anno_nascita +
+				", email='" + email + '\'' +
+				", password='" + password + '\'' +
+				", cf='" + cf + '\'' +
+				'}';
 	}
-
 }
