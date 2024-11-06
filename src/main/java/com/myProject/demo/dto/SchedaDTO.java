@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class SchedaDTO {
 
-    private int id;
+    private Integer id;
 
     @NotNull(message = "La data di creazione non può essere nulla")
     private Date data_creazione;
@@ -27,7 +27,7 @@ public class SchedaDTO {
 
     public SchedaDTO() {}
 
-    public SchedaDTO(int id, Date data_creazione, Date data_fine, String esercizio, String reps, String recupero) {
+    public SchedaDTO(Integer id, Date data_creazione, Date data_fine, String esercizio, String reps, String recupero) {
         this.id = id;
         this.data_creazione = data_creazione;
         this.data_fine = data_fine;
@@ -37,11 +37,11 @@ public class SchedaDTO {
     }
 
     // Getters e Setters
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -85,3 +85,4 @@ public class SchedaDTO {
         this.recupero = recupero;
     }
 }
+

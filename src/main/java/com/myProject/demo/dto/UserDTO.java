@@ -1,12 +1,10 @@
 package com.myProject.demo.dto;
 
-import jakarta.persistence.Column;
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class UserDTO {
 
@@ -19,7 +17,7 @@ public class UserDTO {
     private String cognome;
 
     @NotNull(message = "L'anno di nascita non può essere nullo")
-    private LocalDate anno_nascita;
+    private Date annoNascita;
 
     @Email(message = "Email non valida")
     @NotBlank(message = "L'email non può essere vuota")
@@ -33,11 +31,11 @@ public class UserDTO {
 
     public UserDTO() {}
 
-    public UserDTO(int id, String nome, String cognome, LocalDate anno_nascita, String email, String password, String cf) {
+    public UserDTO(int id, String nome, String cognome, Date annoNascita, String email, String password, String cf) {
         this.id = id;
         this.nome = nome;
         this.cognome = cognome;
-        this.anno_nascita = anno_nascita;
+        this.annoNascita = annoNascita;
         this.email = email;
         this.password = password;
         this.cf = cf;
@@ -68,12 +66,12 @@ public class UserDTO {
         this.cognome = cognome;
     }
 
-    public LocalDate getAnno_nascita() {
-        return anno_nascita;
+    public Date getAnnoNascita() {
+        return annoNascita;
     }
 
-    public void setAnno_nascita(LocalDate anno_nascita) {
-        this.anno_nascita = anno_nascita;
+    public void setAnnoNascita(Date annoNascita) {
+        this.annoNascita = annoNascita;
     }
 
     public String getEmail() {
@@ -106,7 +104,7 @@ public class UserDTO {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", cognome='" + cognome + '\'' +
-                ", anno_nascita=" + anno_nascita +
+                ", anno_nascita=" + annoNascita +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", cf='" + cf + '\'' +

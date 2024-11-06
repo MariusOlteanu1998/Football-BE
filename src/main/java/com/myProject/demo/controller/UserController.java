@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.myProject.demo.dto.UserDTO;
+import com.myProject.demo.model.UserModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,25 +28,25 @@ public class UserController {
 	}
 
 	@GetMapping
-	public List<UserDTO> getAllUsers() {
+	public List<UserModel> getAllUsers() {
 		logger.info("Received request to fetch all users");
 		return userService.getAllUsers();
 	}
 
 	@GetMapping("/{id}")
-	public Optional<UserDTO> getAllUsersById(@PathVariable int id) {
+	public Optional<UserModel> getAllUsersById(@PathVariable int id) {
 		logger.info("Received request to fetch user with ID: {}", id);
 		return userService.getAllUsersById(id);
 	}
 
 	@PutMapping("/{id}")
-	public Optional<UserDTO> updateUserById(@PathVariable int id, @Valid @RequestBody UserDTO user) {
+	public Optional<UserModel> updateUserById(@PathVariable int id, @Valid @RequestBody UserModel user) {
 		logger.info("Received request to update user with ID: {}", id);
 		return Optional.ofNullable(userService.updateUserById(id, user));
 	}
 
 	@PostMapping
-	public UserDTO insert(@Valid @RequestBody UserDTO user) {
+	public UserModel insert(@Valid @RequestBody UserModel user) {
 		logger.info("Received request to insert new user with ID: {}", user.getId());
 		return userService.insertUser(user);
 	}

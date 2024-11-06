@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.myProject.demo.dto.SchedaDTO;
+import com.myProject.demo.model.SchedaModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,33 +24,33 @@ public class SchedaController {
 
     private static final Logger logger = LoggerFactory.getLogger(SchedaController.class);
 
-    @Autowired
     SchedaService schedaService;
 
+    @Autowired
     public SchedaController(SchedaService schedaService) {
         this.schedaService = schedaService;
     }
 
     @GetMapping
-    public List<SchedaDTO> getAllScheda(){
+    public List<SchedaModel> getAllScheda(){
         logger.info("Received request to fetch all schedas");
         return schedaService.getAllScheda();
     }
 
     @GetMapping("/{id}")
-    public Optional<SchedaDTO> getSchedaById(@PathVariable int id){
+    public Optional<SchedaModel> getSchedaById(@PathVariable int id){
         logger.info("Received request to fetch scheda with id {}", id);
         return schedaService.getAllSchedaById(id);
     }
 
     @PutMapping("/{id}")
-    public Optional<SchedaDTO> updateSchedaById(@PathVariable int id, @Valid @RequestBody SchedaDTO schedaModel){
+    public Optional<SchedaModel> updateSchedaById(@PathVariable int id, @Valid @RequestBody SchedaModel schedaModel){
         logger.info("Received request to update scheda with id {}", id);
         return Optional.ofNullable(schedaService.updateSchedaById(id, schedaModel));
     }
 
     @PostMapping
-    public SchedaDTO insertScheda(@Valid @RequestBody SchedaDTO schedaModel){
+    public SchedaModel insertScheda(@Valid @RequestBody SchedaModel schedaModel){
         logger.info("Received request to insert scheda with id {}", schedaModel.getId());
         return schedaService.insertScheda(schedaModel);
     }
@@ -60,3 +61,4 @@ public class SchedaController {
         schedaService.deleteSchedaById(id);
     }
 }
+
