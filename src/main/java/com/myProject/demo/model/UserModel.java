@@ -38,9 +38,9 @@ public class UserModel {
 	@Column(name = "cf", unique = true)
 	private String cf;
 
-	@NotNull
-	@ManyToOne
-	@JoinColumn(name = "IdAccountType", referencedColumnName = "IdAccountType")
-	private UserType fkAccountType;
+//	@NotNull
+//	@ManyToOne
+//	@JoinColumn(name = "IdAccountType", referencedColumnName = "IdAccountType")
+//	private UserType fkAccountType;
 
 }

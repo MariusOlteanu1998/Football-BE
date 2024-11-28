@@ -1,16 +1,16 @@
-package com.myProject.demo.security.exception;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class ProfileException extends Exception {
-	
-	private String info;
-
-}
+//package com.myProject.demo.security.exception;
+//
+//import lombok.AllArgsConstructor;
+//import lombok.Getter;
+//import lombok.NoArgsConstructor;
+//import lombok.Setter;
+//
+//@Getter
+//@Setter
+//@AllArgsConstructor
+//@NoArgsConstructor
+//public class ProfileException extends Exception {
+//
+//	private String info;
+//
+//}
